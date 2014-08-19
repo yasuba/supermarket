@@ -3,12 +3,17 @@ require_relative 'item'
 class Basket 
 
 
-	def initialize
+	def initialize(item=nil)
 		@items = []
+		@items << item unless item.nil?
 	end
 
 	def items
-		@items
+		@items ||= []
+	end
+
+	def items=(value)
+		@items = value
 	end
 
  	def item_count
