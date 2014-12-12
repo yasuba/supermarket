@@ -1,15 +1,10 @@
 require 'item'
 
 describe Item do
-  let(:item) {Item.new(:price => 5, :name => 'Apple')}
+  let(:item) {Item.new(['Apple', 5])}
 
   it 'should be for sale once initialized' do
     expect(item.for_sale?).to eq true
-  end
-
-  it 'should not be available once sold' do
-    item.sold!
-    expect(item.for_sale?).to eq false
   end
 
   it 'should have a price' do
@@ -20,5 +15,15 @@ describe Item do
     expect(item.name).to eq 'Apple'
   end
 
+  it 'should not be available once sold' do
+    item.buy!
+    expect(item.for_sale?).to eq false
+  end
+
+  it 'can be returned' do
+    item.buy!
+    item.return!
+    expect(item.for_sale?).to eq true
+  end
 
 end

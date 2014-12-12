@@ -4,8 +4,8 @@ class Item
   attr_reader :name
 
   def initialize(product_info)
-    @price = product_info[:price]
-    @name =  product_info[:name]
+    @price = product_info[1]
+    @name =  product_info[0]
     @for_sale = true
   end
 
@@ -13,9 +13,12 @@ class Item
     @for_sale
   end
 
-  def sold!
+  def buy!
     @for_sale = false
   end
 
+  def return!
+    @for_sale = true
+  end
 
 end
