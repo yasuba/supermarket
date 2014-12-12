@@ -1,3 +1,3 @@
-When(/^I click "(.*?)"$/) do |arg1|
-  click_button arg1
+When(/^I click "(.*?)"$/) do |name|
+  click_button name
 end

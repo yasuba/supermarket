@@ -5,5 +5,5 @@ Feature: Shopping
 
 Scenario: Choosing items
   Given I am on the homepage
-  When I click "Add"
-  Then the basket should be updated
+  When I click "Add apple"
+  Then I should see "1 item added"

@@ -8,6 +8,9 @@ describe Basket do
   let(:item2) {Item.new(['Banana', 4])}
   let(:item3) {Item.new(['Banana', 4])}
   let(:bogof) {Discount.new('BOGOF', 0)}
+  let(:bulk_buy) {Discount.new('BULK', 0)}
+  let(:item4) {Item.new(['Apple', 5])}
+  let(:item5) {Item.new(['Apple', 5])}
   let(:basket_with_item) {Basket.new(item)}
 
   it 'should start off being empty, containing no items' do
@@ -65,11 +68,19 @@ describe Basket do
     expect(basket.total_price).to eq 8
   end
 
-  it 'should be able to apply a half-price discount' do
+  it 'should be able to apply a half-price discount voucher' do
     basket.accept(item2)
     basket.accept(item3)
     basket.accept(bogof)
     expect(basket.final_price).to eq 4
+  end
+
+  it 'should be able to apply a money-off discount voucher when bulk-buying' do
+    basket.accept(item)
+    basket.accept(item4)
+    basket.accept(item5)
+    basket.accept(bulk_buy)
+    expect(basket.final_price).to eq 13.5
   end
 
 
