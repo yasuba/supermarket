@@ -15,22 +15,24 @@
   What would you like to buy?
 
   <ul>
-
-    <li>Apple 50p <button name="apple">Add apple</button> <button>Remove</button></li>
+  <form method="post" action="/cart">
+    <li>Apple 50p <button class="item" onlick="<%= hello %>">Add apple</button> <button>Remove</button></li>
     <li>Banana 70p <button>Add banana</button> <button>Remove</button></li>
     <li>Strawberries &pound;1.10 <button>Add strawberries</button> <button>Remove</button></li>
-    <li>Grapes 99p <button>Add grpes</button> <button>Remove</button></li>
+    <li>Grapes 99p <button>Add grapes</button> <button>Remove</button></li>
     <li>Mango &pound;1.10 <button>Add mango</button> <button>Remove</button></li>
-
+  </form>
   </ul>
 
   </section>
 
-  <section>
-  Basket
-
-  1 item added
-  </section>
+  <script src="./javascript/jquery-2.1.1.min.js"></script>
+  <script>
+  $('.item').on('click', function(event){
+    event.preventDefault();
+    basket.add(new Item(['apple', 5]));
+  });
+  </script>
 
 </body>
 
